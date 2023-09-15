@@ -1,10 +1,9 @@
 import {Mario_Style} from './style'
 import Mario from '../../../public/mario.gif'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Mario2 from '../../../public/mario2.png'
 import GameOver from '../../../public/gameover.webp'
 export default function Person(){
-    const [over,SetOver] = useState(false)
     useEffect(()=>{
 
 
@@ -16,12 +15,11 @@ export default function Person(){
                 el[0].src = Mario2
                 el[0].style.transform ='scaleX(-1)'
               
-            } else if (e.key == 'ArrowUp') {
-                console.log(over)
+            } else if (e.key === 'ArrowUp') {
                 let el = document.getElementsByClassName('mario')
                 if(el) {
                     let style = window.getComputedStyle(el[0])
-                    if (style.bottom == '155px') {
+                    if (style.bottom === '155px') {
                         el[0].classList.add('jump')
                         setTimeout(() => {
                             el[0].classList.remove('jump')
@@ -44,7 +42,7 @@ export default function Person(){
         document.addEventListener("keyup", soltouTecla);
 
 
-        var interval = setInterval(() => {
+        setInterval(() => {
             let mario = document.getElementsByClassName('mario')
             let marioStyle = window.getComputedStyle(mario[0])
            // console.log(marioStyle.bottom)
@@ -62,7 +60,6 @@ export default function Person(){
         }, 10);
 
         function Death(){
-            console.log('over?',over)
             const imagem = new Image();
 
             // Defina o caminho da imagem
